@@ -1,48 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hitung Luas Segitiga</title>
-    <link rel="stylesheet" href="style/style.css">
     
+    <link rel="stylesheet" href="style/style.css">
     
 </head>
 <body>
-    <div class="tengah">
-    <div class="step">
-    <h2>Hitung Luas Segitiga</h2>
+<div class="container">
+<div class="step">
+<h2>Hitung Luas Segitiga</h2>
+<label for="alas">Panjang Alas (cm):</label><br>
+<input type="number" id="alas" placeholder="Nilai alas" required><br>
+<label for="tinggi">Tinggi (cm):</label><br>
+<input type="number" id="tinggi" placeholder="Nilai tinggi" required><br><br>
+<button onclick="hitungLuas()">Hitung Luas</button>
 
-    <div class="stepone">
-    <label for="">Alas Segitiga</label><br>
-    <input type="number" id="alas"><br><br>
-
-    <label for="">Tinggi Segitiga</label><br>
-    <input type="number" id="tinggi"><br>
-    
-    <div class="stepdone">
-    <button id="hasil"> Hasil</button><br><br>
-    <div id="output"></div>
-    </div>
-    </div>
-    </div>
-    <script>
-        const alas = document.getElementById('alas')
-        const tinggi = document.getElementById('tinggi')
-        const hasil = document.getElementById('hasil')
-        const output = document.getElementById('output')
-       
-        hasil.addEventListener('click', function(){
-            let a = alas.value
-            let t = tinggi.value
-            let l = 0.5*a*t 
+<div id="hasil"></div>
+</div>
+<script>
+    function hitungLuas() {
         
-            output.innerHTML = `Luas segita dari alas  ${a} cm dan tinggi ${t} cm 
-             adalah ${l} cm<sup>2</sup>`
-             })
+        const Alas = parseFloat(document.getElementById('alas').value);
+        const Tinggi = parseFloat(document.getElementById('tinggi').value);
 
+       
+        if (isNaN(Alas) || isNaN(Tinggi) || Alas <= 0 || Tinggi <= 0) {
+            document.getElementById("hasil").innerHTML = "Silakan masukkan nilai yang valid.";
+            return;
+        }
 
-    </script> 
-    </div>
+        
+        let luas = 0.5 * Alas * Tinggi;
+        let AlasTinggi = Alas * Tinggi;
+
+       
+        let hsl = "Hitung Luas Segitiga dengan Nilai:<br>";
+        hsl += "Luas = 1/2 × Alas × Tinggi<br>";
+        hsl += "Luas = 1/2 × " + Alas + " cm × " + Tinggi + " cm<br>";
+        hsl += "Luas = 1/2 × " + AlasTinggi + " cm²<br>";
+        hsl += "Luas = " + luas + " cm²<br>";
+
+        
+        document.getElementById("hasil").innerHTML = hsl;
+    }
+</script>
+</div>
 </body>
 </html>
